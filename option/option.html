@@ -25,11 +25,11 @@
        -
        - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
     -->
-    <script src="../node_modules/whatwg-fetch/fetch.js"></script>
-    <script src="../commons.js"></script>
-    <script src="../httpHelper.js"></script>
-
+    <script src="../util/commons.js"></script>
+    <script src="../util/helper.js"></script>
+    <script src="../functions-scripts/make-required-properties.js"></script>
     <script src="option.js"></script>
+
 </head>
 
 <body>
@@ -38,8 +38,10 @@
 <div id="InformationForm">
     <span>apiKey</span>
     <input id="apiKey" type="text" placeholder="apiKey" name="apiKey"/>
-    <span>name</span>
-    <input id="name" type="text" placeholder="name" name="name"/>
+    <span>portal id</span>
+    <input id="portal" type="text" placeholder="Portal Id" name="portal"/>
+    <span>hubspot email</span>
+    <input id="email" type="text" placeholder="email" name="email"/>
     <button id="save">save</button>
 </div>
 

@@ -1,5 +1,5 @@
 // when the contact is already existing in our hubspot base, we launch this function to create an array of all the messages to check if already existing
-const getCurrentNotes = async (contactId) => {
+const getHubspotMessages = async (contactId) => {
     let apiKey = await getApiKey();
     if(!apiKey){
         throw "api key not found";
@@ -15,13 +15,17 @@ const getCurrentNotes = async (contactId) => {
         if(result.results){
             result.results.forEach(result=>{
                 if (result.engagement.type === "NOTE" && result.engagement.uid && result.engagement.uid.indexOf("linkedin") >= 0) {
+
                     if(result.engagement.timestamp > timeStamp){
                         timeStamp = result.engagement.timestamp;
                         lastMessageId = result.engagement.uid;
                     }
-                    if (!messages.includes(result.metadata.uid)) {
-                        messages.push(result.metadata.uid);
-                    }
+
+                    messages.push({
+                        id: result.engagement.uid,
+                        timeStamp: result.engagement.timestamp,
+                        body: result.metadata.body
+                    });
                 }
             })
         }

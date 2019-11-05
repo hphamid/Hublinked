@@ -1,8 +1,7 @@
 function run() {
-    console.log("salam");
-
     var apiKey = document.getElementById('apiKey');
-    var name = document.getElementById('name');
+    var email = document.getElementById('email');
+    var portal = document.getElementById('portal');
     var saveButton = document.getElementById('save');
 
     loadData();
@@ -11,16 +10,26 @@ function run() {
         getApiKey().then(function(apiKeyStr){
             apiKey.value = apiKeyStr;
         });
-        getName().then(function(nameStr){
-            name.value = nameStr;
+        getEmail().then(function(emailStr){
+            email.value = emailStr;
+        });
+        getPortal().then(function(portalstr){
+            portal.value = portalstr;
         })
     }
 
 
     saveButton.addEventListener("click", save);
     function save(){
-        setApiKey(apiKey.value);
-        setName(name.value);
+        saveAsync().then(()=>{console.log("saved")});
+    }
+
+    async function saveAsync(){
+        await removeAll();
+        await setApiKey(apiKey.value);
+        await setEmail(email.value);
+        await setPortal(portal.value);
+        await makeLinkedinRequiredFields();
         loadData();
     }
 

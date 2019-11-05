@@ -1,26 +1,47 @@
 {
-    "name": "HubLinked",
-    "version": "1.3.1",
-    "description": "Create Hubspot contacts from Linkedin and scrape your conversation",
-    "manifest_version": 2,
-    "icons": { "128": "0.png" },
-    "background": {
-        "scripts": ["background.js"],
-        "persistent": false
-    },
-    "permissions": [
-        "activeTab",
-        "storage",
-        "contextMenus",
-        "background",
-        "cookies",
-        "notifications",
-        "https://www.linkedin.com/*",
-        "https://linkedin.com/*",
-        "https://api.hubapi.com/*",
-        "https://api.dropcontact.io/*"
+  "name": "HubLinked",
+  "version": "2.0.0",
+  "description": "Create Hubspot contacts from Linkedin and scrape your conversation",
+  "manifest_version": 2,
+  "icons": {
+    "128": "0.png"
+  },
+  "background": {
+    "scripts": [
+      "util/commons.js",
+      "util/helper.js",
+      "util/company-data-holder.js",
+      "util/contact-data-holder.js",
+      "background.js"
     ],
-    "browser_action": {
-        "default_popup": "popup.html"
+    "persistent": false
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "contextMenus",
+    "background",
+    "cookies",
+    "https://www.linkedin.com/*",
+    "https://linkedin.com/*",
+    "https://api.hubapi.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.linkedin.com/*"
+      ],
+      "js": [
+        "content-scripts/fetch-data.js"
+      ],
+      "css": []
     }
+  ],
+  "options_ui": {
+    "page": "option/option.html",
+    "chrome_style": true
+  },
+  "browser_action": {
+    "default_popup": "popup.html"
+  }
 }
