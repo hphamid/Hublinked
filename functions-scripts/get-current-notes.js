@@ -14,7 +14,7 @@ const getCurrentNotes = async (contactId) => {
         console.log("result", result);
         if(result.results){
             result.results.forEach(result=>{
-                if (result.engagement.type === "NOTE" && result.engagement.uid && result.engagement.uid.indexOf("linkedin") >= 0) {
+                if (result.engagement.type === "CALL" && result.engagement.uid && result.engagement.uid.indexOf("linkedin") >= 0) {
                     if(result.engagement.timestamp > timeStamp){
                         timeStamp = result.engagement.timestamp;
                         lastMessageId = result.engagement.uid;

@@ -31,7 +31,7 @@ async function addNoteToHubspot(apiKey, ownerId, contactId, companyId, timeStamp
             engagement: {
                 active: true,
                 ownerId: ownerId,
-                type: "NOTE",
+                type: "CALL",
                 timestamp: timeStamp,
                 uid: uid
             },
