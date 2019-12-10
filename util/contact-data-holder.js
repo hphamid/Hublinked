@@ -123,6 +123,9 @@ ContactDataHolder.prototype.getData = async function(method){
             })
         }
         hasMore = contacts["has-more"];
+        if(offset == contacts["vid-offset"]){
+            hasMore = false; //hubspot bug...
+        }
         offset = contacts["vid-offset"];
 
     }while(hasMore);
