@@ -20,7 +20,7 @@ function fetchLinkedinCompanyData (companyUniversalName){
         .then(data=>data.replace(/"/g, ""))
         .then(function(data){
             return fetch(
-                `https://www.linkedin.com/voyager/api/organization/companies?decorationId=com.linkedin.voyager.deco.organization.web.WebFullCompanyMain-18&q=universalName&universalName=`+companyUniversalName,
+                `https://www.linkedin.com/voyager/api/organization/companies?decorationId=com.linkedin.voyager.deco.organization.web.WebFullCompanyMain-18&q=universalName&universalName=`+encodeURIComponent(companyUniversalName),
                 {
                     headers: {
                         "csrf-token": data
