@@ -295,7 +295,7 @@ function getConversationId (conversationUrn){
 
 async function getAccountData() {
     const fullName = document.querySelector(
-        ".pv-top-card-v3--list.inline-flex.align-items-center li"
+        ".ph5 .break-words"
     ).innerText;
     const firstName = fullName.split(" ")[0] || "not found";
     const lastName =
@@ -308,7 +308,7 @@ async function getAccountData() {
     const linkedinUrl = window.location.href;
     const accountName = getAccountName(linkedinUrl);
     const companyName = document.querySelector(
-        ".pv-top-card-v3--experience-list-item"
+        ".ph5 span.lt-line-clamp"
     ).innerText;
 
     const jobTitle = document.querySelector(".flex-1.mr5 h2").innerText;
@@ -316,7 +316,7 @@ async function getAccountData() {
     const companyUrl = document.querySelector("#experience-section li:nth-child(1) a").href;
 
     const location = document.querySelector(
-        ".pv-top-card-v3--list.pv-top-card-v3--list-bullet li"
+        ".ph5 .pv-top-card--list-bullet li.inline-block.t-16"
     ).innerText;
 
     let result = {
@@ -363,7 +363,7 @@ chrome.runtime.onMessage.addListener(
         if(request.action === "linkedinAll"){
             try{
                 // clickMessageButton();
-                getMessages().then(result=>{sendResponse(result)});
+                getMessages().then(result=>{sendResponse(result)}).catch(e=>alert(e));
                 return true;
             }catch(e){
                 alert(e);
@@ -372,7 +372,7 @@ chrome.runtime.onMessage.addListener(
         }else if(request.action === "linkedinAccount"){
             try{
                 // clickMessageButton();
-                getContactData().then(result=>{sendResponse(result)});
+                getContactData().then(result=>{sendResponse(result)}).catch(e=>alert(e));
                 return true;
             }catch(e){
                 alert(e);

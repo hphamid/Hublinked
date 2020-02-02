@@ -20,7 +20,7 @@ const addToHubspot = async function () {
     let hubspotsMessages = await getHubspotMessages(contactId);
     console.log("hubspot messages", hubspotsMessages);
     createElement("p", "logs", "got messages. last sync " + hubspotsMessages.timeStamp + ", id " + hubspotsMessages.lastMessageId);
-    createElement("p", "logs", "adding notes " + data.messages.length);
+    createElement("p", "logs", "adding messages " + data.messages.length);
     await addNotes(hubSpotOwnerId, contactId, companyId, data.messages, hubspotsMessages);
     createElement("p", "logs", "Sync Done");
 };
